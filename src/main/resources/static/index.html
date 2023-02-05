@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EchoWebSocket</title>
+</head>
+<body>
+<div>
+    <input type="text" id="echo"/>
+    <button type="button" onclick="send()">Send</button>
+</div>
+<div class="events"></div>
+<script>
+    let clientWebSocket = new WebSocket("ws://localhost:8080/uppercase");
+    clientWebSocket.onopen = function() {
+        console.log("clientWebSocket.onopen");
+    }
+    clientWebSocket.onclose = function(error) {
+        console.log("clientWebSocket.onclose", error);
+        events("Closing connection");
+    }
+    clientWebSocket.onerror = function(error) {
+        console.log("clientWebSocket.onerror", error);
+        events("An error occured");
+    }
+    clientWebSocket.onmessage = function(resp) {
+        console.log("clientWebSocket.onmessage", resp);
+        events(resp.data);
+    }
+
+    function send() {
+        let echoText = document.getElementById("echo").value;
+        clientWebSocket.send(echoText);
+    }
+
+    function events(responseEvent) {
+        document.querySelector(".events").innerHTML += responseEvent + "<br>";
+    }
+</script>
+</body>
+</html>
