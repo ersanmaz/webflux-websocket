@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <title>EchoWebSocket</title>
     <link type="text/css" rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
 <div>
-    <div id="connect-container" class="ui centered grid">
+    <div id="connect-container" class="ui centered grid" style="padding-top: 100px">
         <div class="row">
-            <button id="connect" onclick="connect();" class="ui green button ">Connect</button>
-            <button id="disconnect" disabled="disabled" onclick="disconnect();"
-                    class="ui red button">Disconnect</button>
+            <button id="connect" onclick="connect()" class="ui green button ">Connect</button>
+            <button id="disconnect" disabled="disabled" onclick="disconnect()"
+                    class="ui red button">Disconnect
+            </button>
+        </div>
+        <label for="message">Send a message to Echo to get it back in uppercase</label><br/>
+        <div class="row">
+            <textarea id="message" style="width: 350px" class="ui input"></textarea>
         </div>
         <div class="row">
-            <textarea id="message" style="width: 350px" class="ui input"
-                                                   placeholder="Message to Echo"></textarea>
-        </div>
-        <div class="row">
-            <button id="echo" onclick="echo();" disabled="disabled"
-                    class="ui button">Echo message</button>
+            <button id="echo" onclick="echo();" disabled="disabled" class="ui button">Send</button>
         </div>
     </div>
-    <div id="console-container">
-        <h3>Logging</h3>
+    <div class="ui centered grid" style="padding: 30px"><h3>Logging</h3></div>
+    <div id="console-container" class="ui centered grid">
         <div id="logging"></div>
     </div>
 </div>
