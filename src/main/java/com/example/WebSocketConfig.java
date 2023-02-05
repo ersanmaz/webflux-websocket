@@ -12,7 +12,7 @@ public class WebSocketConfig {
 
     @Bean
     public HandlerMapping handlerMapping(EchoWebSocketHandler echoWebSocketHandler) {
-        Map<String, EchoWebSocketHandler> handlerMap = Map.of("/uppercase", echoWebSocketHandler);
+        Map<String, EchoWebSocketHandler> handlerMap = Map.of("/echo/uppercase", echoWebSocketHandler);
         return new SimpleUrlHandlerMapping(handlerMap, 1);
     }
 }
